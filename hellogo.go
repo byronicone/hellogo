@@ -3,5 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Printf("hello, world\n")
+	message, closing := "hello, mars", "i bid you adieu"
+	fmt.Println(message, closing)
 }
