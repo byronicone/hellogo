@@ -15,12 +15,17 @@ const (
 )
 
 func describe(person Person) int {
-	fmt.Println(createMessage(person.name, person.age))
+	description, _ := createMessage(person.name, person.age)
+	fmt.Println(description)
 	return person.id
 }
 
-func createMessage(name string, age int) string {
-	return name + " is " + strconv.Itoa(age) + " years old!"
+func createMessage(name string, age int) (message string, alternate string) {
+	strAge := strconv.Itoa(age)
+	nextAge := strconv.Itoa(age + 1)
+	message = name + " is " + strAge + " years old!"
+	alternate = name + " is going to be " + nextAge + " next year.  How ancient..."
+	return
 }
 
 func main() {
