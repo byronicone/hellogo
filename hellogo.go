@@ -1,10 +1,11 @@
 package main
 
 import "fmt"
+import "strconv"
 
 type Person struct {
 	name string
-	age  int8
+	age  int
 	id   int
 }
 
@@ -13,13 +14,18 @@ const (
 	B
 )
 
-func greet(person Person) {
-	fmt.Println(person.name, person.age)
+func describe(person Person) int {
+	fmt.Println(createMessage(person.name, person.age))
+	return person.id
+}
+
+func createMessage(name string, age int) string {
+	return name + " is " + strconv.Itoa(age) + " years old!"
 }
 
 func main() {
 
 	var dude = Person{"Byron", 29, A}
-	greet(dude)
+	_ = describe(dude)
 
 }
