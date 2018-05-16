@@ -8,6 +8,7 @@ const (
 )
 
 func main() {
+
 	var dude = Person{"Byron", []string{"Bigwig", "The Cleaner"}, 29, A}
 	fmt.Println("Simple func:")
 	describe(dude, simpleMessageFunc(dude))
