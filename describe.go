@@ -5,25 +5,26 @@ import (
 	"strconv"
 )
 
-type Printer func(Person) int
+type Printer func(Person) string
 
-func describe(person Person, do Printer) {
-	_ = do(person)
+func describe(person Person, c chan string, do Printer) {
+	str := do(person)
+	c <- str
 }
 
 func simpleMessageFunc(person Person) (p Printer) {
-	return func(person Person) (id int) {
+	return func(person Person) (method string) {
 		printNameAndAge(person.name, person.age)
-		return person.id
+		return "simple"
 	}
 }
 
 func verboseMessageFunc(person Person) (p Printer) {
-	return func(person Person) (id int) {
+	return func(person Person) (method string) {
 		printNameAndAge(person.name, person.age)
 		printCommentary(person.age + 1)
 		printNicknames(person.nicknames)
-		return person.id
+		return "verbose"
 	}
 }
 
